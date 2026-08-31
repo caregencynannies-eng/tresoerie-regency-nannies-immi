@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regency Nannies × Immigraffaires — Tableau de bord (v138)</title>
+<title>Regency Nannies × Immigraffaires — Tableau de bord (v143)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
@@ -4784,7 +4784,7 @@ function tousLesContrats() {
     dateSignature: s.date_signature ? new Date(s.date_signature) : null,
     dateEmbauche: s.date_embauche ? new Date(s.date_embauche) : null,
     typeCandidat: s.type_candidat,
-    revenu: s.revenu,
+    revenu: s.revenu != null ? s.revenu : (s.revenu_contrat || 0),   // v141
     statut: s.statut,
     statutDossier: s.statut_dossier,
     moisTitreExcel: s.mois_titre_excel,
@@ -4869,7 +4869,8 @@ function calculerKPIs() {
 
   // Pour Stripe (Nanny School + Consultation): la date de paiement compte
   const stripeRealise = contrats
-    .filter(c => (c.section === 'nanny_school' || c.section === 'consultation') && c.revenu > 0 && dansPeriode(c.dateSignature))
+    .filter(c => (c.section === 'nanny_school' || c.section === 'consultation') && c.revenu > 0
+              && dansPeriode(c.dateSignature || c.dateEmbauche))   // v143 : date de paiement
     .reduce((s, c) => s + c.revenu, 0);
 
   // === RECRUTEMENT — POTENTIEL (SIGNED mais pas encore HIRED) ===
@@ -12472,7 +12473,42 @@ function appliquerReclassementsManuels() {
 // v99 : contrat present au Suivi 2025 (octobre) mais confirme par Ida
 // comme vente 2026 (embauche fevrier 2026). Ajoute ici en attendant la
 // correction du fichier source. Jour estime au 15.
+// v140 (31 aout) : mise a jour T3 — juillet et aout 2026, d'apres le
+// Suivi Contrats 2026 (feuille Trimestre 3) et Argent par Legal (feuille
+// 2026, lignes 60-67 Regency et 91 Immigraffaires). Decisions d'Ida :
+// Bolduc en aout, Sabrina Pitre = vente (dates estimees), Prescila
+// Palope = 2 ventes, Aglugub 2 610 $ HT.
+const CONTRATS_T3_2026 = [
+  {"id": "cs_t3_pugliese", "dept": "recrutement", "famille": "FAMILY SILVANA PUGLIESE", "nounou": "HIRED JANET PACOLOR TABILOS", "revenu_contrat": 3500, "date_signature": "2026-07-16", "date_embauche": "2026-07-20", "mois": "JUILLET", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — juillet, FAMILY CANDIDATE", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_cheaib_palope", "dept": "recrutement", "famille": "FAMILY JAMIL CHEAIB - RECRUTEMENT", "nounou": "HIRED PRESCILA T. PALOPE", "revenu_contrat": 5000, "date_signature": "2026-07-21", "date_embauche": "2026-07-21", "mois": "JUILLET", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — 3e bloc; Ida confirme 2 ventes distinctes pour Prescila Palope (Cheaib juillet, Chai août)", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_paragua_cours", "dept": "recrutement", "famille": "DONABEL PARAGUA", "nounou": null, "revenu_contrat": 1000, "date_signature": "2026-07-31", "date_embauche": "2026-07-31", "mois": "JUILLET", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "nanny_school", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — cours Nanny School juillet, virement bancaire (1 149,79 $ TTC)", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_rahbani", "dept": "recrutement", "famille": "FAMILY RAMZI AND MARISA RAHBANI", "nounou": "EXCELLA DAPROZA", "revenu_contrat": 650, "date_signature": "2026-07-04", "date_embauche": "2026-08-05", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "LOCAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août, recrutement local (747,34 $ TTC payé)", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_bolduc", "dept": "recrutement", "famille": "FAMILY CATHERINE BOLDUC", "nounou": "MONA GRACE", "revenu_contrat": 850, "date_signature": "2026-05-25", "date_embauche": "2026-07-27", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "LOCAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — embauche 27 juillet mais classée AOÛT sur décision d’Ida (31 août); 972 $ TTC payé", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_dousti", "dept": "recrutement", "famille": "FAMILY EVA DOUSTI", "nounou": "HIRED MAY FLOR DELA ROSA IGNAO", "revenu_contrat": 2500, "date_signature": "2026-08-20", "date_embauche": "2026-08-20", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_wolf", "dept": "recrutement", "famille": "FAMILY YAEL WOLF PAID", "nounou": "HIRED GIRLIE ILUSTRE", "revenu_contrat": 5000, "date_signature": "2026-06-26", "date_embauche": "2026-08-21", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_cpitre", "dept": "recrutement", "famille": "FAMILY CHANTAL PITRE ORGANIC", "nounou": "HIRED LERMA SANTE", "revenu_contrat": 5000, "date_signature": "2026-08-19", "date_embauche": "2026-08-25", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_spitre", "dept": "recrutement", "famille": "FAMILY* SABRINA PITRE", "nounou": "HIRED MARYJO A. AROC", "revenu_contrat": 5000, "date_signature": "2026-08-15", "date_embauche": "2026-08-15", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — aucune date de signature ni d’embauche au Suivi; vente confirmée par Ida (31 août), dates estimées au 15 août", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_peretz", "dept": "recrutement", "famille": "FAMILY MAUDE PERETZ LAROCHELLE", "nounou": "HIRED SIMRANJIT KAUR", "revenu_contrat": 3500, "date_signature": "2026-08-22", "date_embauche": "2026-08-22", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août, FAMILY CANDIDATE", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_moreau", "dept": "recrutement", "famille": "FAMILY* ERIKA MOREAU GILBERT", "nounou": "HIRED MARY ANN BADARAYL", "revenu_contrat": 5000, "date_signature": "2026-08-06", "date_embauche": "2026-08-28", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — août", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_chai", "dept": "recrutement", "famille": "FAMILY HAYLEY ET SIRINE CHAI", "nounou": "HIRED PRESCILA PALOPE", "revenu_contrat": 5000, "date_signature": "2026-07-21", "date_embauche": "2026-08-18", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "contrats", "type_candidat": "INTERNATIONAL", "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — 3e bloc; 2e vente Prescila Palope confirmée par Ida", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_delarosa_cours", "dept": "recrutement", "famille": "MAY FLOR DELA ROSA IGNAO", "nounou": null, "revenu_contrat": 1000, "date_signature": "2026-08-14", "date_embauche": "2026-08-14", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "nanny_school", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — cours août, e-transfer", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_aglugub_cours", "dept": "recrutement", "famille": "KATHLEEN AGLUGUB", "nounou": null, "revenu_contrat": 2610, "date_signature": "2026-08-17", "date_embauche": "2026-08-17", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "nanny_school", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — cours août, comptant au bureau; 2 610 $ HT confirmé par Ida", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_batislaon_cours", "dept": "recrutement", "famille": "MERCY FAITH BATISLAON", "nounou": null, "revenu_contrat": 1000, "date_signature": "2026-08-20", "date_embauche": "2026-08-20", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "nanny_school", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — cours août, Stripe", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_pena_cons", "dept": "recrutement", "famille": "COSETTE PENA", "nounou": null, "revenu_contrat": 20, "date_signature": "2026-08-10", "date_embauche": "2026-08-10", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "consultation", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — consultation août, comptant", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_menayan_cons", "dept": "recrutement", "famille": "MENAYAN EVANGELINE", "nounou": null, "revenu_contrat": 20, "date_signature": "2026-08-17", "date_embauche": "2026-08-17", "mois": "AOUT", "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "consultation", "type_candidat": null, "notes": "Suivi Contrats 2026, feuille Trimestre 3 (31 août) — consultation août, comptant", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Suivi T3)"},
+  {"id": "cs_t3_leg_valentino", "dept": "legal_regency", "famille": "ROSANA VALENTINO", "nounou": "LORNA COPERO SATOL", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.60 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_elemquies", "dept": "legal_regency", "famille": "ALEXANDRA ELEMQUIES", "nounou": "ZONY DANGGALAN PARDUA", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.61 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_lanoue", "dept": "legal_regency", "famille": "LAURIE LANOUE", "nounou": "FENELYN BELANO REYES", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.62 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_cheng", "dept": "legal_regency", "famille": "MAY CHENG", "nounou": "MA CECILIA LABING", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.63 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_zubeida", "dept": "legal_regency", "famille": "KETTY ZUBEIDA", "nounou": "MA GOLDA AUXTERO", "revenu_contrat": 3000, "revenu_employeur": 2000, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.64 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_chevalier", "dept": "legal_regency", "famille": "KAREL CHEVALIER PLANTE", "nounou": "HILDIRA DIAZ LOPEZ", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.65 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_lafontaine", "dept": "legal_regency", "famille": "JULIE LAFONTAINE", "nounou": "JEWEL SALZAR", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.66 — T3, renouvellement signé le 8 août 2026 (Ida)", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_leg_laroche", "dept": "legal_regency", "famille": "MARTIN LAROCHE", "nounou": "LEONILYN PUDOL PARUNGAO", "revenu_contrat": 3300, "revenu_employeur": 2300, "revenu_employee": 1000, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "regency", "notes": "Argent par Légal 2026 l.67 — T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"},
+  {"id": "cs_t3_imm_melanie", "dept": "legal_immig", "famille": "MELANIE", "nounou": "PATRICIA", "revenu_contrat": 4000, "revenu_employeur": 2500, "revenu_employee": 1500, "service_legal": "renouvellement", "date_signature": "", "date_embauche": null, "mois": null, "annee": 2026, "trimestre": 3, "statut": "HIRED", "section": "legal", "entite": "immigraffaires", "notes": "Argent par Légal 2026 l.91 — Immigraffaires T3", "saisie_manuelle": true, "date_creation": "2026-08-31T00:00:00.000Z", "auteur": "app (v140 — Argent par Légal T3)"}
+];
+
 const CONTRATS_PREDEFINIS = [
+  ...CONTRATS_T3_2026,
   {
     id: 'cs_pre_fernandez_cours',
     dept: 'recrutement',
@@ -12948,8 +12984,19 @@ function enregistrerContratSaisi() {
   saveContratsSaisis();
   
   appliquerContratsSaisis();
-  
-  alert(`✓ Contrat enregistré!\n\n${contrat.famille}${contrat.nounou ? ' ↔ ' + contrat.nounou : ''}\nRevenu: ${fmt(contrat.revenu_contrat)}\n\nVisible dans Données sources et Rapprochement.`);
+
+  // v139 : orienter le Suivi Excel vers la feuille du contrat pour que
+  // le bloc « Ajoutés dans l'app » soit visible au premier coup d'oeil.
+  if (contrat.dept === 'recrutement' && contrat.trimestre) {
+    state.suiviExcelFeuilleActive = 'Trimestre ' + contrat.trimestre;
+    state.suiviSource = 'recrutement';
+  } else if (contrat.dept === 'legal_regency') {
+    state.suiviSource = 'legal_regency';
+  } else if (contrat.dept === 'legal_immig') {
+    state.suiviSource = 'legal_immig';
+  }
+
+  alert(`✓ Contrat enregistré!\n\n${contrat.famille}${contrat.nounou ? ' ↔ ' + contrat.nounou : ''}\nRevenu: ${fmt(contrat.revenu_contrat)}\n\nVisible dans Rapprochement, Données sources et Suivi Excel${contrat.dept === 'recrutement' && contrat.trimestre ? ' (feuille Trimestre ' + contrat.trimestre + ', bloc \u00ab Ajout\u00e9s dans l\u2019app \u00bb)' : ''}.`);
   
   resetFormAjouterContrat();
   renderAjouterContrat();
@@ -12978,8 +13025,10 @@ function appliquerContratsSaisis() {
       if (!deja) {
         state.sources[target].push({
           famille: c.famille, nounou: c.nounou, revenu_contrat: c.revenu_contrat,
+          revenu: c.revenu_contrat,                // v141 : lu par le KPI du tableau de bord
           date_signature: c.date_signature, date_embauche: c.date_embauche,
-          mois: c.mois, annee: c.annee, statut: c.statut,
+          mois: c.mois, mois_effectif: c.mois, trimestre: c.trimestre,
+          annee: c.annee, statut: c.statut,
           section: c.section, type_candidat: c.type_candidat, notes: c.notes,
           _saisie_id: c.id, _saisie_manuelle: true,
         });
@@ -13010,14 +13059,18 @@ function appliquerContratsSaisis() {
       if (!state.sources[target]) state.sources[target] = [];
       const deja = state.sources[target].find(s => s._saisie_id === c.id);
       if (!deja) {
+        // v142 : champs attendus par le constructeur du KPI Legal
+        const _emp = c.revenu_employeur || 0, _eye = c.revenu_employee || 0;
         state.sources[target].push({
           famille: c.famille, nounou: c.nounou, revenu_contrat: c.revenu_contrat,
-          date_signature: c.date_signature, trimestre: c.trimestre, annee: c.annee,
+          revenu_employeur: (_emp || _eye) ? _emp : (c.revenu_contrat || 0),
+          revenu_employee: _eye,
+          date_signature: c.date_signature || null, trimestre: c.trimestre, annee: c.annee,
+          mois_effectif: c.mois || null, source_excel: 'Saisie manuelle dans l\u2019app',
           entite: c.entite, notes: c.notes,
           _saisie_id: c.id, _saisie_manuelle: true,
         });
       }
-      
       const rappKey = c.dept === 'legal_regency' ? 'rapprochementLegalRegency' : 'rapprochementLegalImmig';
       if (!state.sources[rappKey]) state.sources[rappKey] = [];
       const dejaRL = state.sources[rappKey].find(r =>
@@ -13068,6 +13121,9 @@ function appliquerContratsSaisis() {
 }
 
 function retirerContratSaisiDeSources(id) {
+  if (state.data && state.data.paiementsLegal) {   // v141
+    state.data.paiementsLegal = state.data.paiementsLegal.filter(p => p._saisie_id !== id);
+  }
   for (const key of ['suivi2025', 'suivi2026', 'legalRegency', 'legalImmig']) {
     if (state.sources[key]) {
       state.sources[key] = state.sources[key].filter(s => s._saisie_id !== id);
