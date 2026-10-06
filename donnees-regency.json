@@ -17,7 +17,8 @@
   "paiements_confirmes": 0,
   "dossiers_dropped": 0,
   "ecarts_commentaires": 0,
-  "ecarts_statuts": 0
+  "ecarts_statuts": 0,
+  "origines_legal": 53
  },
  "donnees": {
   "contrats_saisis": [
@@ -1400,6 +1401,538 @@
   "paiements_confirmes": {},
   "dossiers_dropped": {},
   "ecarts_commentaires": {},
-  "ecarts_statuts": {}
+  "ecarts_statuts": {},
+  "origines_legal": {
+   "2026-06-15|184000|MELANIE LOUBAT": {
+    "origine": "anterieur",
+    "dossier": "MELANIE LOUBATON / JANETTE BAIDAL SINFOROSO",
+    "annee_dossier": 2025,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-07-15|80000|AMINA AISSAOUI": {
+    "origine": "exercice",
+    "dossier": "RAWAN ELABD / AMINA AISSAOUI",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-07-16|184000|DR FRANCA TARA": {
+    "origine": "exercice",
+    "dossier": "FRANCA TARANTINO / MA MELISSA CASTELO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-07-16|80000|MICHELLE ZHANG": {
+    "origine": "exercice",
+    "dossier": "MICHELLE ZHANG / AYRENE CARRERA",
+    "annee_dossier": 2026,
+    "note": "Les deux lignes d'Argent par Légal sont le même dossier saisi deux fois — Ayrene Carrera et Ayrene Castro Carrera, même famille, même trimestre. Les deux sont de 2026, donc l'origine ne change pas. Doublon à nettoyer dans Argent par Légal.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-07-20|80000|RAQUEL AREVALO": {
+    "origine": "exercice",
+    "dossier": "YANICK PHILBERT / RAQUEL CANTOS AREVALO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-07-29|184000|JANY-EVE SAUCI": {
+    "origine": "exercice",
+    "dossier": "JANY EVE SAUCIER / CHRISTINA MIA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-07-29|184000|PHILIPPE ANDRE": {
+    "origine": "exercice",
+    "dossier": "PHILIPPE VEZINA / JAYZL GRACILLA GILE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-02|80000|GIOVANNA SALVO": {
+    "origine": "exercice",
+    "dossier": "GIOVANNA SALVO / ROSALIE SUMAYA ROMERO",
+    "annee_dossier": 2026,
+    "note": "Deux versions du dossier Giovanna Salvo, 2025 et 2026. Les deux versements du 2 août font 1 840 + 800 = 2 640, soit exactement 80 % du contrat 2026 de 3 300 $. C'est donc la version 2026.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-02|184000|GIOVANNA SALVO": {
+    "origine": "exercice",
+    "dossier": "GIOVANNA SALVO / ROSALIE SUMAYA ROMERO",
+    "annee_dossier": 2026,
+    "note": "Même dossier que le versement de 800 $ du même jour : 1 840 + 800 = 2 640 = 80 % de 3 300 $, le contrat 2026.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-04|184000|MAREVA-LUNA GI": {
+    "origine": "exercice",
+    "dossier": "MAREVA BEDARD / JENNIFER ESPINOSA",
+    "annee_dossier": 2026,
+    "note": "Le payeur est MAREVA-LUNA GIROUX-BEDARD et le dossier MAREVA BEDARD : le prénom ET le nom correspondent, le tokeniseur avait buté sur le trait d'union.",
+    "quand": "2026-10-06",
+    "groupe": "C",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-10|184000|EMMANUEL GROND": {
+    "origine": "exercice",
+    "dossier": "EMMANUEL GRONDIN / JASMIN TRAHAN",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-10|80000|EMMANUEL GROND": {
+    "origine": "exercice",
+    "dossier": "EMMANUEL GRONDIN / JASMIN TRAHAN",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-10|80000|JAYZL GILE": {
+    "origine": "exercice",
+    "dossier": "PHILIPPE VEZINA / JAYZL GRACILLA GILE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-13|184000|ALEXANDRE TARD": {
+    "origine": "exercice",
+    "dossier": "ALEXANDRE TARDIF / ANGELICA SIBAL BENTILLO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-14|80000|ANGELICA BENTI": {
+    "origine": "exercice",
+    "dossier": "ALEXANDRE TARDIF / ANGELICA SIBAL BENTILLO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-17|80000|CHANTAL DESJAR": {
+    "origine": "exercice",
+    "dossier": "CHANTAL DESJARDINS / WENDY MONREAL LACDANG",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-17|184000|MARIE-ANDREE A": {
+    "origine": "exercice",
+    "dossier": "MARIE ANDRET AUDET / MELODY CELIS SALAZAR",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-08-18|80000|MELODY SALAZAR": {
+    "origine": "exercice",
+    "dossier": "MARIE ANDRET AUDET / MELODY CELIS SALAZAR",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-19|119537|CHANTAL DESJAR": {
+    "origine": "exercice",
+    "dossier": "CHANTAL DESJARDINS / WENDY MONREAL LACDANG",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1195.37,
+    "_dept": "legal_regency"
+   },
+   "2026-08-20|130463|CHANTAL DESJAR": {
+    "origine": "exercice",
+    "dossier": "CHANTAL DESJARDINS / WENDY MONREAL LACDANG",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1304.63,
+    "_dept": "legal_regency"
+   },
+   "2026-08-24|91980|CHRISTINA MIA": {
+    "origine": "exercice",
+    "dossier": "JANY EVE SAUCIER / CHRISTINA MIA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 919.8,
+    "_dept": "legal_regency"
+   },
+   "2026-08-27|40000|CHANTAL PITRE": {
+    "origine": "exercice",
+    "dossier": "CHANTAL PITRE / ROSALYN LEDESMA CRUZ",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 400,
+    "_dept": "legal_regency"
+   },
+   "2026-08-28|91980|ELIZABETH ADVI": {
+    "origine": "anterieur",
+    "dossier": "CHANTAL CANLAS / ELIZABETH ADVINCULA",
+    "annee_dossier": 2025,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 919.8,
+    "_dept": "legal_regency"
+   },
+   "2026-08-28|80000|JENNIFER ESPIN": {
+    "origine": "exercice",
+    "dossier": "MAREVA BEDARD / JENNIFER ESPINOSA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-28|23482|ROSALYN LEDESM": {
+    "origine": "exercice",
+    "dossier": "CHANTAL PITRE / ROSALYN LEDESMA CRUZ",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 234.82,
+    "_dept": "legal_regency"
+   },
+   "2026-08-28|40000|RUBY GONZALES": {
+    "origine": "exercice",
+    "dossier": "ANDREA LAFRAMBOISE / RUBY ANO GONZALES",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 400,
+    "_dept": "legal_regency"
+   },
+   "2026-08-31|80000|MARIA DEVINA D": {
+    "origine": "exercice",
+    "dossier": "OLIVIER CHAMPAGNE PARENT / MARIA DEVINA DAPRINAL PASION",
+    "annee_dossier": 2026,
+    "note": "Deux versions du dossier Olivier Champagne Parent, 2025 et 2026. Avec le 1 840 $ du 2 septembre : 2 640 = 80 % du contrat 2026 de 3 300 $.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-09-02|184000|OLIVIER CHAMPA": {
+    "origine": "exercice",
+    "dossier": "OLIVIER CHAMPAGNE PARENT / MARIA DEVINA DAPRINAL PASION",
+    "annee_dossier": 2026,
+    "note": "Même dossier que le 800 $ du 31 août : 1 840 + 800 = 2 640 = 80 % de 3 300 $, le contrat 2026.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-07|184000|ROSSANA VALENT": {
+    "origine": "exercice",
+    "dossier": "ROSANA VALENTINO / LORNA COPERO SATOL",
+    "annee_dossier": 2026,
+    "note": "« Rossana » pour « Rosana » : même nom de famille, Valentino. Et 1 840 + 800 = 2 640 = 80 % du contrat de 3 300 $.",
+    "quand": "2026-10-06",
+    "groupe": "C",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-07|80000|ROSSANA VALENT": {
+    "origine": "exercice",
+    "dossier": "ROSANA VALENTINO / LORNA COPERO SATOL",
+    "annee_dossier": 2026,
+    "note": "Même dossier que le 1 840 $ du même jour : 1 840 + 800 = 2 640 = 80 % de 3 300 $.",
+    "quand": "2026-10-06",
+    "groupe": "C",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-09-08|42000|AMINA YASMINE ": {
+    "origine": "exercice",
+    "dossier": "YASMINE ACHER / Quitze Cucharo Ubaub",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 420,
+    "_dept": "legal_regency"
+   },
+   "2026-09-08|80000|GIRLY NARAG": {
+    "origine": "exercice",
+    "dossier": "SEIF BELHENI / GIRLY",
+    "annee_dossier": 2026,
+    "note": "Le dossier SEIF BELHENI / GIRLY : « Girly » est le prénom de la nounou. Le même jour, SEIFEDDINE BENELHANI verse 1 840 $ — c'est la part employeur du même dossier. 1 840 + 800 = 2 640 = 80 % de 3 300 $.",
+    "quand": "2026-10-06",
+    "groupe": "C",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-09-08|184000|MARIE EVE CARR": {
+    "origine": "exercice",
+    "dossier": "MARIE-ÈVE CARRIER / MARLITA DAYAG TABAO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-08|36321|ROXANNE LARENA": {
+    "origine": "exercice",
+    "dossier": "null / ROXANNE LARENA - STUDY PERMIT",
+    "annee_dossier": 2026,
+    "note": "Deux lignes Roxanne Larena, toutes deux de 2026 T1 : une consultation de 200 $ et un permis d'études de 1 700 $. L'origine est la même dans les deux cas ; 363,21 $ ne tombe sur aucun des deux montants, je le porte au permis d'études. À confirmer.",
+    "quand": "2026-10-06",
+    "groupe": "B",
+    "_montant": 363.21,
+    "_dept": "legal_regency"
+   },
+   "2026-09-08|184000|SEIFEDDINE BEN": {
+    "origine": "exercice",
+    "dossier": "SEIF BELHENI / GIRLY",
+    "annee_dossier": 2026,
+    "note": "« SEIFEDDINE BENELHANI » est la forme longue de « SEIF BELHENI ». Part employeur : avec les 800 $ de Girly Narag le même jour, 1 840 + 800 = 2 640 = 80 % du contrat de 3 300 $.",
+    "quand": "2026-10-06",
+    "groupe": "D",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-09|80539|AILENE HINOLA": {
+    "origine": "exercice",
+    "dossier": "JEAN PHILIPPE ROBERT / AILENE HINOLA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 805.39,
+    "_dept": "legal_regency"
+   },
+   "2026-09-10|47565|UBAUB QUITZE C": {
+    "origine": "exercice",
+    "dossier": "YASMINE ACHER / Quitze Cucharo Ubaub",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 475.65,
+    "_dept": "legal_regency"
+   },
+   "2026-09-11|20000|JOYCE BAYASEN ": {
+    "origine": "exercice",
+    "dossier": "ALAIN SAAD / JOYCE BAYASEN SEÑOREN",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 200,
+    "_dept": "legal_regency"
+   },
+   "2026-09-14|46000|ALAIN SAAD": {
+    "origine": "exercice",
+    "dossier": "ALAIN SAAD / JOYCE BAYASEN SEÑOREN",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 460,
+    "_dept": "legal_regency"
+   },
+   "2026-09-16|176000|ALEXANDRA ELEM": {
+    "origine": "exercice",
+    "dossier": "ALEXANDRA ELEMQUIES / ZONY DANGGALAN PARDUA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1760,
+    "_dept": "legal_regency"
+   },
+   "2026-09-16|184000|LAURIE LANOUE": {
+    "origine": "exercice",
+    "dossier": "LAURIE LANOUE / FENELYN BELANO REYES",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-16|46000|VITTORIO GESUA": {
+    "origine": "exercice",
+    "dossier": "VITTORIO GESUALDI / RHOGIE ANN MORALDE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 460,
+    "_dept": "legal_regency"
+   },
+   "2026-09-16|17395|VITTORIO GESUA": {
+    "origine": "exercice",
+    "dossier": "VITTORIO GESUALDI / RHOGIE ANN MORALDE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 173.95,
+    "_dept": "legal_regency"
+   },
+   "2026-09-16|62622|VITTORIO GESUA": {
+    "origine": "exercice",
+    "dossier": "VITTORIO GESUALDI / RHOGIE ANN MORALDE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 626.22,
+    "_dept": "legal_regency"
+   },
+   "2026-09-21|184000|JEAN-PHILIPPE ": {
+    "origine": "exercice",
+    "dossier": "JEAN PHILIPPE ROBERT / AILENE HINOLA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 1840,
+    "_dept": "legal_regency"
+   },
+   "2026-09-21|13797|JOCELYN MATEO ": {
+    "origine": "exercice",
+    "dossier": "SARAH SHAPIRO / JOCELYN DAUS",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 137.97,
+    "_dept": "legal_regency"
+   },
+   "2026-09-22|80000|ALEXANDRA ELEM": {
+    "origine": "exercice",
+    "dossier": "ALEXANDRA ELEMQUIES / ZONY DANGGALAN PARDUA",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-09-23|20000|CHARLEMAGNE MA": {
+    "origine": "exercice",
+    "dossier": "NICOLAS CARBONNEAU / CHARLEMAGNE MAGRARE",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 200,
+    "_dept": "legal_regency"
+   },
+   "2026-09-23|46000|LAUREANNE FLEU": {
+    "origine": "exercice",
+    "dossier": "LAUREANNE FLEURY DUFOUR / CINDERELLA QUINTO",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 460,
+    "_dept": "legal_regency"
+   },
+   "2026-09-24|80000|LAURIE LANOUE": {
+    "origine": "exercice",
+    "dossier": "LAURIE LANOUE / FENELYN BELANO REYES",
+    "annee_dossier": 2026,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-09-25|20000|CINDERELLA QUI": {
+    "origine": "exercice",
+    "dossier": "LAUREANNE FLEURY DUFOUR / CINDERELLA QUINTO",
+    "annee_dossier": 2026,
+    "note": "« Quintond » pour « Quinto » : même prénom rare et même nom. Le dossier est LAUREANNE FLEURY DUFOUR, dont un autre versement figure dans la même file le 23 septembre.",
+    "quand": "2026-10-06",
+    "groupe": "C",
+    "_montant": 200,
+    "_dept": "legal_regency"
+   },
+   "2026-09-25|80000|JEWEL PASONABE": {
+    "origine": "anterieur",
+    "dossier": "JULIE LAFONTAINE / JEWEL RASONABE SALAR",
+    "annee_dossier": 2025,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 800,
+    "_dept": "legal_regency"
+   },
+   "2026-08-05|75000|SONIA NIKIÈMA": {
+    "origine": "anterieur",
+    "dossier": "DAVID MORRIN / SONIA NIKIEMA",
+    "annee_dossier": 2025,
+    "note": "Proposition acceptée en bloc par Ida le 6 octobre. Deux mots du nom du payeur au moins tombent sur ce seul dossier.",
+    "quand": "2026-10-06",
+    "groupe": "A",
+    "_montant": 750,
+    "_dept": "legal_immig"
+   }
+  }
  }
 }
