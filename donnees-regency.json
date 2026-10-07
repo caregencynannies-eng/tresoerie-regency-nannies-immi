@@ -1,4 +1,7 @@
 {
+ "version": "v167",
+ "genere": "2026-10-07",
+ "note": "v167 — Immigraffaires T3 et T4 importes depuis 1_ARGENT PAR LEGAL.xlsx en suivant les totaux du fichier (T1 10 400 / T2 23 900 / T3 12 700 / T4 4 000). 54e origine legale : LES TRICOTS PRIMOTEXT KNITTING INC / DON-DON, 2 000 $ du 22 septembre.",
  "fichier": "donnees-regency.json",
  "a_quoi_ca_sert": "Toutes les saisies faites dans le tableau de bord : contrats ajoutés, rattachements, décisions et corrections. Ce fichier se dépose à côté de index.html. Le code peut changer autant de fois qu'on veut, il n'y touche jamais.",
  "version_app": "Regency Nannies × Immigraffaires — Tableau de bord (v164)",
@@ -18,7 +21,7 @@
   "dossiers_dropped": 0,
   "ecarts_commentaires": 0,
   "ecarts_statuts": 0,
-  "origines_legal": 53
+  "origines_legal": 54
  },
  "donnees": {
   "contrats_saisis": [
@@ -1931,6 +1934,16 @@
     "quand": "2026-10-06",
     "groupe": "A",
     "_montant": 750,
+    "_dept": "legal_immig"
+   },
+   "2026-09-22|200000|LES TRICOTS PR": {
+    "origine": "exercice",
+    "dossier": "LES TRICOTS PRIMOTEXT KNITTING INC / DON-DON",
+    "annee_dossier": 2026,
+    "note": "Le dossier existe au T3 d'Argent par Légal (2 500 employeur + 1 500 employée). Il manquait à l'app parce que l'import s'arrêtait au T2. Importé le 7 octobre 2026.",
+    "quand": "2026-10-07",
+    "groupe": "D->A",
+    "_montant": 2000.0,
     "_dept": "legal_immig"
    }
   }
